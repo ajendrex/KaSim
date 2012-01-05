@@ -2,7 +2,6 @@
 %agent: A(x,c) # Declaration of agent A 
 %agent: B(x) # Declaration of B 
 %agent: C(x1~u~p,x2~u~p) # Declaration of C with 2 modifiable sites
-%agent: D()
 
 #### Rules 
 'a.b' A(x),B(x) -> A(x!1),B(x!1) @ 'on_rate' #A binds B 

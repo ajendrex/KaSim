@@ -75,7 +75,7 @@
 \def\dd{-\hspace{0.001cm}-}
 
 %%%%
-\def\version{v1.08}
+\def\version{v2.0}
 
 
 \title{KaSim reference manual \version}
@@ -495,7 +495,7 @@ We try first a coarse simulation of $100,000$ events (10 times the number of age
 Plotting the content of the \ttt{abc.out} file one notices that nothing of significant interest happen to the observables after 250s. So we can now specify a meaningful time limit by running
 \ttt{
 \ITE{
-\item[\$] KaSim -i ABC.ka -e 100000 -t 250 -o abc.out
+\item[\$] KaSim -i ABC.ka -e 100000 -t 250 -p 1000 -o abc.out
 }}
 which produces the data points whose rendering is given in Fig.~\ref{fig:abc}.
 \begin{figure}[htbp]
@@ -559,7 +559,7 @@ will set the kinetic rate of a declared rule named \ttt{`rule\_name'} to $\infty
 
 The \textit{end\_expression} serves to specify whether the perturbation should be applied only once ("one shot" perturbation) or at every future events until a condition is reached (persistent perturbation). For instance:
 \ttt{\ITE{
-\item[] \%mod: ([mod] [T] 100)=0 do \$DEL  [inf] C until [T]>1000
+\item[] \%mod: ([T] [mod] 100)=0 do \$DEL  [inf] C until [T]>1000
 }}
 will delete every \ttt{C} from the mixture every 100 t.u until the simulation clock has passed 1000 t.u. If no \ttt{until} keyword is positioned, the perturbation will be discarded after its first application.
 
@@ -602,7 +602,7 @@ We can now replace the perturbation of the previous example by the above one and
 
 Note that snapshots can be performed multiple times, for instance every 1000 events, using the declaration:
 \ttt{\ITE{
-\item[] \%mod:  ([mod] [E] 1000)=0 do \$SNAPSHOT \textquotedbl abc\textquotedbl~until [false] 
+\item[] \%mod:  ([E] [mod] 1000)=0 do \$SNAPSHOT \textquotedbl abc\textquotedbl~until [false] 
 }}
 which results in \KaSim~producing a snapshot every 1000 events until the simulation ends. The perturbation \ttt{\$STOP \"final\_state\"} will terminate the simulation whenever its precondition is satisfied and produce a snapshot of the last mixture.
 

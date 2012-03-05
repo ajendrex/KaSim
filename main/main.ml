@@ -66,11 +66,13 @@ let main =
 		(*Printexc.record_backtrace !Parameter.backtrace ; (*Possible backtrace*)*)
 		
 		(*let _ = Printexc.record_backtrace !Parameter.debugModeOn in*) 
+    (* Parse input files *)
 		let result =
 			Ast.init_compil() ;
 			List.iter (fun fic -> let _ = KappaLexer.compile fic in ()) !Parameter.inputKappaFileNames ;
 			!Ast.result
 		in
+    (* Initialize random number generator *)
 		let (_: unit) =
 			match !Parameter.seedValue with
 			| Some seed -> Random.init seed
@@ -84,8 +86,11 @@ let main =
 					end
 		in
 		
+    (* This counter will store information about number of simulated events, simulation time (bio-time),
+       max values for events and bio-time, progress bar ticks *)
 		let counter =	Counter.create 0.0 0 !Parameter.maxTimeValue !Parameter.maxEventValue in
 		
+    (* Initialize state and environment *)
 		let (env, state) = 
 			match !Parameter.marshalizedInFile with
 				| "" -> Eval.initialize result counter
@@ -104,6 +109,7 @@ let main =
 						| exn -> (Debug.tag "!Simulation package seems to have been created with a different version of KaSim, aborting..." ; exit 1) 
 		in
 		
+    (* Save (env,state) to marshalizedOutFile if asked *)
 		let (_:unit) = 
 			match !Parameter.marshalizedOutFile with
 				| "" -> ()
@@ -114,12 +120,14 @@ let main =
 						close_out d
 					end
 		in
+    (* Write the influence map if asked *)
 		if !Parameter.influenceFileName <> ""  then 
 			begin
 				let desc = open_out !Parameter.influenceFileName in
 				State.dot_of_influence_map desc state env ; 
 				close_out desc 
 			end ;  
+    (* Debugging stuff? (printing rules) *)  
 		if !Parameter.compileModeOn then (Hashtbl.iter (fun i r -> Dynamics.dump r env) state.State.rules ; exit 0)
 		else () ;
 		let plot = Plot.create !Parameter.outputDataName
@@ -135,10 +143,12 @@ let main =
 		in
 		ExceptionDefn.flush_warning () ; 
 		try
+      (* Run the simulation *)
 			Run.loop state grid event_list counter plot env ;
 			print_newline() ;
 			Printf.printf "Simulation ended (eff.: %f)\n" 
 			((float_of_int (Counter.event counter)) /. (float_of_int (Counter.null_event counter + Counter.event counter))) ;
+      (* Write flux map *)
 			if !Parameter.fluxModeOn then 
 				begin
 					let d = open_out !Parameter.fluxFileName in
@@ -146,6 +156,7 @@ let main =
 					close_out d
 				end 
 			else () ;
+    (* Exception handling *)
 		with
 			| Invalid_argument msg -> 
 				begin

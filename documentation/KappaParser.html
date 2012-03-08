@@ -1,0 +1,497 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Eval.html">
+<link rel="next" href="Debug.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Graph" rel="Chapter" href="Graph.html">
+<link title="Species" rel="Chapter" href="Species.html">
+<link title="Node" rel="Chapter" href="Node.html">
+<link title="DynamicArray" rel="Chapter" href="DynamicArray.html">
+<link title="LongString" rel="Chapter" href="LongString.html">
+<link title="Heap" rel="Chapter" href="Heap.html">
+<link title="Mods" rel="Chapter" href="Mods.html">
+<link title="MapExt" rel="Chapter" href="MapExt.html">
+<link title="LiftSet" rel="Chapter" href="LiftSet.html">
+<link title="Profiling" rel="Chapter" href="Profiling.html">
+<link title="MemoryManagement" rel="Chapter" href="MemoryManagement.html">
+<link title="SafeHeap" rel="Chapter" href="SafeHeap.html">
+<link title="LargeArray" rel="Chapter" href="LargeArray.html">
+<link title="Tools" rel="Chapter" href="Tools.html">
+<link title="Random_tree" rel="Chapter" href="Random_tree.html">
+<link title="ValMap" rel="Chapter" href="ValMap.html">
+<link title="Main" rel="Chapter" href="Main.html">
+<link title="Parameter" rel="Chapter" href="Parameter.html">
+<link title="Cflow_handler" rel="Chapter" href="Cflow_handler.html">
+<link title="Causal" rel="Chapter" href="Causal.html">
+<link title="Compression_main" rel="Chapter" href="Compression_main.html">
+<link title="Kappa_instantiation" rel="Chapter" href="Kappa_instantiation.html">
+<link title="Blackboard_generation" rel="Chapter" href="Blackboard_generation.html">
+<link title="Propagation_heuristics" rel="Chapter" href="Propagation_heuristics.html">
+<link title="Generic_branch_and_cut_solver" rel="Chapter" href="Generic_branch_and_cut_solver.html">
+<link title="Blackboard" rel="Chapter" href="Blackboard.html">
+<link title="KappaLexer" rel="Chapter" href="KappaLexer.html">
+<link title="Ast" rel="Chapter" href="Ast.html">
+<link title="Eval" rel="Chapter" href="Eval.html">
+<link title="KappaParser" rel="Chapter" href="KappaParser.html">
+<link title="Debug" rel="Chapter" href="Debug.html">
+<link title="ExceptionDefn" rel="Chapter" href="ExceptionDefn.html">
+<link title="Dynamics" rel="Chapter" href="Dynamics.html">
+<link title="Precondition" rel="Chapter" href="Precondition.html">
+<link title="Matching" rel="Chapter" href="Matching.html">
+<link title="Mixture" rel="Chapter" href="Mixture.html">
+<link title="Signature" rel="Chapter" href="Signature.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Plot" rel="Chapter" href="Plot.html">
+<link title="External" rel="Chapter" href="External.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="Run" rel="Chapter" href="Run.html">
+<link title="NonLocal" rel="Chapter" href="NonLocal.html"><title>KappaParser</title>
+</head>
+<body>
+<div class="navbar"><a href="Eval.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Debug.html">Next</a>
+</div>
+<center><h1>Module <a href="type_KappaParser.html">KappaParser</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> KappaParser: <code class="code">sig</code> <a href="KappaParser.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<br><code><span id="TYPEtoken"><span class="keyword">type</span> <code class="type"></code>token</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">EOF</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">NEWLINE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">AT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">OP_PAR</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">CL_PAR</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">COMMA</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">DOT</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_LNK</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">PIPE</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">LOG</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">PLUS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">MULT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">MINUS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">AND</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">OR</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">GREATER</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SMALLER</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">EQUAL</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">NOT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">PERT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">INTRO</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">DELETE</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SET</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">DO</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">UNTIL</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TRUE</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FALSE</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">REF</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">OBS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_RAR</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_WLD</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_SEMI</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SIGNATURE</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">INFINITY</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TIME</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">EVENT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">INIT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">LET</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">DIV</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">PLOT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SINUS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">COSINUS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TAN</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SQRT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">EXPONENT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">POW</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">ABS</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">MODULO</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_NOPOLY</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">EMAX</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">TMAX</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">INT</span> <span class="keyword">of</span> <code class="type">(int * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">ID</span> <span class="keyword">of</span> <code class="type">(string * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">LABEL</span> <span class="keyword">of</span> <code class="type">(string * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">KAPPA_MRK</span> <span class="keyword">of</span> <code class="type">(string * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">DOT_RADIUS</span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">PLUS_RADIUS</span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FLOAT</span> <span class="keyword">of</span> <code class="type">(float * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">FILENAME</span> <span class="keyword">of</span> <code class="type">(string * <a href="Tools.html#TYPEpos">Tools.pos</a>)</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">STOP</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">SNAPSHOT</span> <span class="keyword">of</span> <code class="type"><a href="Tools.html#TYPEpos">Tools.pos</a></code></code></td>
+
+</tr></table>
+
+
+<pre><span id="VALyytransl_const"><span class="keyword">val</span> <a href="code_VALKappaParser.yytransl_const.html">yytransl_const</a></span> : <code class="type">int array</code></pre><pre><span id="VALyytransl_block"><span class="keyword">val</span> <a href="code_VALKappaParser.yytransl_block.html">yytransl_block</a></span> : <code class="type">int array</code></pre><pre><span id="VALyylhs"><span class="keyword">val</span> <a href="code_VALKappaParser.yylhs.html">yylhs</a></span> : <code class="type">string</code></pre><pre><span id="VALyylen"><span class="keyword">val</span> <a href="code_VALKappaParser.yylen.html">yylen</a></span> : <code class="type">string</code></pre><pre><span id="VALyydefred"><span class="keyword">val</span> <a href="code_VALKappaParser.yydefred.html">yydefred</a></span> : <code class="type">string</code></pre><pre><span id="VALyydgoto"><span class="keyword">val</span> <a href="code_VALKappaParser.yydgoto.html">yydgoto</a></span> : <code class="type">string</code></pre><pre><span id="VALyysindex"><span class="keyword">val</span> <a href="code_VALKappaParser.yysindex.html">yysindex</a></span> : <code class="type">string</code></pre><pre><span id="VALyyrindex"><span class="keyword">val</span> <a href="code_VALKappaParser.yyrindex.html">yyrindex</a></span> : <code class="type">string</code></pre><pre><span id="VALyygindex"><span class="keyword">val</span> <a href="code_VALKappaParser.yygindex.html">yygindex</a></span> : <code class="type">string</code></pre><pre><span id="VALyytablesize"><span class="keyword">val</span> <a href="code_VALKappaParser.yytablesize.html">yytablesize</a></span> : <code class="type">int</code></pre><pre><span id="VALyytable"><span class="keyword">val</span> <a href="code_VALKappaParser.yytable.html">yytable</a></span> : <code class="type">string</code></pre><pre><span id="VALyycheck"><span class="keyword">val</span> <a href="code_VALKappaParser.yycheck.html">yycheck</a></span> : <code class="type">string</code></pre><pre><span id="VALyynames_const"><span class="keyword">val</span> <a href="code_VALKappaParser.yynames_const.html">yynames_const</a></span> : <code class="type">string</code></pre><pre><span id="VALyynames_block"><span class="keyword">val</span> <a href="code_VALKappaParser.yynames_block.html">yynames_block</a></span> : <code class="type">string</code></pre><pre><span id="VALyyact"><span class="keyword">val</span> <a href="code_VALKappaParser.yyact.html">yyact</a></span> : <code class="type">(Parsing.parser_env -> Obj.t) array</code></pre><pre><span id="VALyytables"><span class="keyword">val</span> <a href="code_VALKappaParser.yytables.html">yytables</a></span> : <code class="type">Parsing.parse_tables</code></pre><pre><span id="VALstart_rule"><span class="keyword">val</span> <a href="code_VALKappaParser.start_rule.html">start_rule</a></span> : <code class="type">(Lexing.lexbuf -> <a href="KappaParser.html#TYPEtoken">token</a>) -> Lexing.lexbuf -> unit</code></pre></body></html>

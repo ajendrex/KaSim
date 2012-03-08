@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Environment.html">
+<link rel="next" href="External.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Graph" rel="Chapter" href="Graph.html">
+<link title="Species" rel="Chapter" href="Species.html">
+<link title="Node" rel="Chapter" href="Node.html">
+<link title="DynamicArray" rel="Chapter" href="DynamicArray.html">
+<link title="LongString" rel="Chapter" href="LongString.html">
+<link title="Heap" rel="Chapter" href="Heap.html">
+<link title="Mods" rel="Chapter" href="Mods.html">
+<link title="MapExt" rel="Chapter" href="MapExt.html">
+<link title="LiftSet" rel="Chapter" href="LiftSet.html">
+<link title="Profiling" rel="Chapter" href="Profiling.html">
+<link title="MemoryManagement" rel="Chapter" href="MemoryManagement.html">
+<link title="SafeHeap" rel="Chapter" href="SafeHeap.html">
+<link title="LargeArray" rel="Chapter" href="LargeArray.html">
+<link title="Tools" rel="Chapter" href="Tools.html">
+<link title="Random_tree" rel="Chapter" href="Random_tree.html">
+<link title="ValMap" rel="Chapter" href="ValMap.html">
+<link title="Main" rel="Chapter" href="Main.html">
+<link title="Parameter" rel="Chapter" href="Parameter.html">
+<link title="Cflow_handler" rel="Chapter" href="Cflow_handler.html">
+<link title="Causal" rel="Chapter" href="Causal.html">
+<link title="Compression_main" rel="Chapter" href="Compression_main.html">
+<link title="Kappa_instantiation" rel="Chapter" href="Kappa_instantiation.html">
+<link title="Blackboard_generation" rel="Chapter" href="Blackboard_generation.html">
+<link title="Propagation_heuristics" rel="Chapter" href="Propagation_heuristics.html">
+<link title="Generic_branch_and_cut_solver" rel="Chapter" href="Generic_branch_and_cut_solver.html">
+<link title="Blackboard" rel="Chapter" href="Blackboard.html">
+<link title="KappaLexer" rel="Chapter" href="KappaLexer.html">
+<link title="Ast" rel="Chapter" href="Ast.html">
+<link title="Eval" rel="Chapter" href="Eval.html">
+<link title="KappaParser" rel="Chapter" href="KappaParser.html">
+<link title="Debug" rel="Chapter" href="Debug.html">
+<link title="ExceptionDefn" rel="Chapter" href="ExceptionDefn.html">
+<link title="Dynamics" rel="Chapter" href="Dynamics.html">
+<link title="Precondition" rel="Chapter" href="Precondition.html">
+<link title="Matching" rel="Chapter" href="Matching.html">
+<link title="Mixture" rel="Chapter" href="Mixture.html">
+<link title="Signature" rel="Chapter" href="Signature.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Plot" rel="Chapter" href="Plot.html">
+<link title="External" rel="Chapter" href="External.html">
+<link title="State" rel="Chapter" href="State.html">
+<link title="Run" rel="Chapter" href="Run.html">
+<link title="NonLocal" rel="Chapter" href="NonLocal.html"><title>Plot</title>
+</head>
+<body>
+<div class="navbar"><a href="Environment.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="External.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Plot.html">Plot</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Plot: <code class="code">sig</code> <a href="Plot.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<br><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span>desc&nbsp;: <code class="type">Pervasives.out_channel option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>file&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span>last_point&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+}
+
+
+<pre><span id="VALcreate"><span class="keyword">val</span> <a href="code_VALPlot.create.html">create</a></span> : <code class="type">string -> <a href="Plot.html#TYPEt">t</a></code></pre><pre><span id="VALclose"><span class="keyword">val</span> <a href="code_VALPlot.close.html">close</a></span> : <code class="type"><a href="Plot.html#TYPEt">t</a> -> unit</code></pre><pre><span id="VALnext_point"><span class="keyword">val</span> <a href="code_VALPlot.next_point.html">next_point</a></span> : <code class="type"><a href="Mods.Counter.html#TYPEt">Mods.Counter.t</a> -> float -> int</code></pre><pre><span id="VALoutput"><span class="keyword">val</span> <a href="code_VALPlot.output.html">output</a></span> : <code class="type"><a href="State.html#TYPEimplicit_state">State.implicit_state</a> -><br>       float -> int -> <a href="Plot.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> <a href="Mods.Counter.html#TYPEt">Mods.Counter.t</a> -> unit</code></pre><pre><span id="VALset_last_point"><span class="keyword">val</span> <a href="code_VALPlot.set_last_point.html">set_last_point</a></span> : <code class="type"><a href="Plot.html#TYPEt">t</a> -> int -> unit</code></pre><pre><span id="VALfill"><span class="keyword">val</span> <a href="code_VALPlot.fill.html">fill</a></span> : <code class="type"><a href="State.html#TYPEimplicit_state">State.implicit_state</a> -><br>       <a href="Mods.Counter.html#TYPEt">Mods.Counter.t</a> -> <a href="Plot.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> float -> unit</code></pre><pre><span id="VALflush_ticks"><span class="keyword">val</span> <a href="code_VALPlot.flush_ticks.html">flush_ticks</a></span> : <code class="type"><a href="Mods.Counter.html#TYPEt">Mods.Counter.t</a> -> unit</code></pre></body></html>
